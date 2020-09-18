@@ -14,6 +14,7 @@ pipeline {
 			steps {
 				withDockerRegistry([ credentialsId: "dockerhub", url: "" ]) {
 				sh 'docker push $APP_REPO_NAME:latest'
+				}
 			}
 		}
 	}
