@@ -12,7 +12,7 @@ pipeline {
 		}
 		stage('Push Image to Docker Hub') {
 			steps {
-				sh 'docker login'
+				withDockerRegistry([ credentialsId: "dockerhub", url: "" ]) {
 				sh 'docker push $APP_REPO_NAME:latest'
 			}
 		}
