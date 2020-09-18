@@ -6,7 +6,7 @@ pipeline {
 	stages {
 		stage('Build Docker Image') {
 			steps {
-				sh 'docker build -t $APP_REPO_NAME:latest /home/ec2-user/jenkins-docker-image'
+				sh 'docker build -t $APP_REPO_NAME:latest .'
 				sh 'docker images'
 			}
 		}
