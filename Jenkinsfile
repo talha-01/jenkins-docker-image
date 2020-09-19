@@ -16,7 +16,9 @@ pipeline {
 		}
 		stage('Build Docker Image') {
 			steps {
-				sh 'docker build -t $APP_REPO_NAME:${BUILD_ID} .'
+				sh 'docker build -t phonebook/latest .'
+				sh 'docker tag phonebook:latest $APP_REPO_NAME:latest'
+				sh 'docker tag phonebook:latest $APP_REPO_NAME:${BUILD_ID} .'
 				sh 'docker images'
 			}
 		}
@@ -24,6 +26,7 @@ pipeline {
 			steps {
 				withDockerRegistry([ credentialsId: "dockerhub", url: "" ]) {
 				sh 'docker push $APP_REPO_NAME:latest'
+				sh 'docker push $APP_REPO_NAME:${BUILD_ID}'
 				}
 			}
 		}
