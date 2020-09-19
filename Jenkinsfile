@@ -29,8 +29,8 @@ pipeline {
 		}
 		stage('Renew deployment') {
 			steps {
-				sh 'mssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -r us-east-1 ubuntu@i-0dab942387df64f51 kubectl delete deployment phonebook-deployment'
-				sh 'mssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -r us-east-1 ubuntu@i-0dab942387df64f51 kubectl apply -f /home/ubuntu/kubernetes-projects/003-flask-mysql-deploy/kubernetes/k8s-phonebook-deploy.yaml'
+				bash 'mssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -r us-east-1 ubuntu@i-0dab942387df64f51 kubectl delete deployment phonebook-deployment'
+				bash 'mssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -r us-east-1 ubuntu@i-0dab942387df64f51 kubectl apply -f /home/ubuntu/kubernetes-projects/003-flask-mysql-deploy/kubernetes/k8s-phonebook-deploy.yaml'
 			}
 		}
 	}
