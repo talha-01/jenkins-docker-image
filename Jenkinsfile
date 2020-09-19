@@ -16,7 +16,7 @@ pipeline {
 		}
 		stage('Build Docker Image') {
 			steps {
-				sh 'docker build -t phonebook/latest .'
+				sh 'docker build -t phonebook:latest .'
 				sh 'docker tag phonebook:latest $APP_REPO_NAME:latest'
 				sh 'docker tag phonebook:latest $APP_REPO_NAME:${BUILD_ID} .'
 				sh 'docker images'
