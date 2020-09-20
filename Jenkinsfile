@@ -35,7 +35,7 @@ pipeline {
 				script {
 					sshagent(credentials : ['ssh']) {
 						sh "echo pwd"
-						sh 'ssh -t -t ubuntu@54.210.214.185 -o StrictHostKeyChecking=no "touch /home/ubuntu/test_jenkins.txt"'
+						sh 'ssh -t -t ubuntu@54.210.214.185 -o StrictHostKeyChecking=no "kubectl set image deployment/phonebook-deployment phonebook=talhas/phonebook:${BUILD_ID} --record"'
 					}
 				}
 			}
