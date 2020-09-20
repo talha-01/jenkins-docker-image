@@ -45,7 +45,7 @@ pipeline {
         	always {
             		echo 'Deleting all local images'
             	sh 'docker image prune -af'
-		sh 'touch test_jenkins.txt'
+		sh 'rm -rf templates app.p* requirements.tx* Dockerfil*'
         	}
 	}
 }
